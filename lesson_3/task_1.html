@@ -13,19 +13,19 @@
         // 1. С помощью цикла for написать алгоритм для вывода чисел (выводите в консоль, 
         // с помощью console.log) от 0 до 10 включительно, чтобы результат выглядел так:
         
-        const words = {
-            null: 'это ноль',
-            even: 'четное число',
-            odd: 'нечетное число' 
+        const Word = {
+            NULL: 'это ноль',
+            EVEN: 'четное число',
+            ODD: 'нечетное число' 
         };
 
         for (let i = 0; i <= 10; i++) {
             if (i === 0) {
-                console.log(`${i} - ${words.null}`);
+                console.log(`${i} - ${Word.NULL}`);
             } else if (i % 2 === 0) {
-                console.log(`${i} - ${words.even}`);
+                console.log(`${i} - ${Word.EVEN}`);
             } else {
-                console.log(`${i} - ${words.odd}`);
+                console.log(`${i} - ${Word.ODD}`);
             }
         }
 

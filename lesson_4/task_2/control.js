@@ -20,39 +20,31 @@ const onKeyDown = evt => {
             map.clear();
             document.removeEventListener('keydown', onKeyDown);
             console.log('Вы вышли из игры.');
-        return;
-
+            return;
         case Control.UP:
             player.move('UP');
-        break;
-
+            break;
         case Control.DOWN:
             player.move('DOWN');
-        break;
-
+            break;
         case Control.LEFT:
             player.move('LEFT');
-        break;
-
+            break;
         case Control.RIGHT:
             player.move('RIGHT');
-        break;
-
+            break;
         case Control.UP_LEFT:
             player.move('UP_LEFT');
-        break;
-
+            break;
         case Control.UP_RIGHT:
             player.move('UP_RIGHT');
-        break;
-
+            break;
         case Control.DOWN_LEFT:
             player.move('DOWN_LEFT');
-        break;
-
+            break;
         case Control.DOWN_RIGHT:
             player.move('DOWN_RIGHT');
-        break;
+            break;
     }
 
     map.rerender();

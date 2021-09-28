@@ -15,51 +15,45 @@ class Player {
         switch(direction) {
             case 'UP':
                 this.row --;
-            break;
-
+                break;
             case 'DOWN':
                 this.row ++;
-            break;
-
+                break;
             case 'LEFT':
                 this.col --;
-            break;
-
+                break;
             case 'RIGHT':
                 this.col ++;
-            break;
-
+                break;
             case 'UP_LEFT':
                 this.col --;
                 this.row --;
-            break;
-
+                break;
             case 'UP_RIGHT':
                 this.col ++;
                 this.row --;
-            break;
-
+                break;
             case 'DOWN_LEFT':
                 this.col --;
                 this.row ++;
-            break;
-
+                break;
             case 'DOWN_RIGHT':
                 this.col ++;
                 this.row ++;
-            break;
+                break;
         }
 
-        if (this.col <= 0) {
-            this.col = 0;
-        } else if (this.col >= MapSize.COLS - 1) {
-            this.col = MapSize.COLS - 1;
+        this.col = this._checkLimit(this.col, MapSize.COLS);
+        this.row = this._checkLimit(this.row, MapSize.ROWS);
+    }
+
+    _checkLimit(coord, limit) {
+        if (coord <= 0) {
+            coord = 0;
+        } else if (coord >= limit - 1) {
+            coord = limit - 1;
         }
 
-        if (this.row <= 0) {
-            this.row = 0;
-        } else if (this.row >= MapSize.ROWS - 1) {
-            this.row = MapSize.ROWS - 1;
-        }
+        return coord;
     }
 }

@@ -1,3 +1,4 @@
+// Аналогично - аналог enum (применяется по соглашению)
 const Control = {
     EXIT: 'Escape',
     UP: 'Numpad8',

@@ -1,13 +1,13 @@
 class Game {
     constructor(data) {
-        this.data = data.slice();
-        this.currentQuestion = null;
-        this.rightAnswer = null;
-        this.rightAnswerLetter = null;
-        this.playerAnswerLetter = null;
-        this.rightAnswerCount = 0;
-        this.wrongAnswerCount = 0;
-        this.player = new Player();
+        this._data = data.slice();
+        this._currentQuestion = null;
+        this._rightAnswer = null;
+        this._rightAnswerLetter = null;
+        this._playerAnswerLetter = null;
+        this._rightAnswerCount = 0;
+        this._wrongAnswerCount = 0;
+        this._player = new Player();
     }
 
     start() {
@@ -20,38 +20,38 @@ class Game {
 
     _report() {
         alert(`Игра окончена.\n
-                Правильных ответов: ${this.rightAnswerCount}
-                Неправильных ответов: ${this.wrongAnswerCount}
-                Количество набранных очков: ${this.player.getScore()}`);
+                Правильных ответов: ${this._rightAnswerCount}
+                Неправильных ответов: ${this._wrongAnswerCount}
+                Количество набранных очков: ${this._player.getScore()}`);
     }
 
     _chooseQuestion() {
-        if (this.data.length === 0) {
+        if (this._data.length === 0) {
             this._report();
             return;
         }
-        const randomIndex = getRandomInt(0, this.data.length);
-        this.currentQuestion = this.data[randomIndex];
-        this.rightAnswer = this.currentQuestion.rightAnswer;
-        this.data.splice(randomIndex, 1);
-        this._askQuestion(this.currentQuestion);
+        const randomIndex = getRandomInt(0, this._data.length);
+        this._currentQuestion = this._data[randomIndex];
+        this._rightAnswer = this._currentQuestion.rightAnswer;
+        this._data.splice(randomIndex, 1);
+        this._askQuestion(this._currentQuestion);
     }
 
     _askQuestion() {
-        this.playerAnswerLetter = prompt(this._renderQuestion());
-        this._checkAnswer(this.playerAnswerLetter);
+        this._playerAnswerLetter = prompt(this._renderQuestion());
+        this._checkAnswer(this._playerAnswerLetter);
     }
 
     _renderQuestion() {
-        const allAnswers = this.currentQuestion.wrongAnswers.slice();
-        allAnswers.push(this.currentQuestion.rightAnswer);
+        const allAnswers = this._currentQuestion.wrongAnswers.slice();
+        allAnswers.push(this._currentQuestion.rightAnswer);
         const answers = shuffle(allAnswers);
     
-        let string = `${this.currentQuestion.question}\n`;
+        let string = `${this._currentQuestion.question}\n`;
 
         answers.forEach((answer, index) => {
-            if (answer === this.rightAnswer) {
-                this.rightAnswerLetter = answerLetters[index];
+            if (answer === this._rightAnswer) {
+                this._rightAnswerLetter = answerLetters[index];
             }
             string += `${answerLetters[index]}. ${answer}\n`
         });
@@ -67,14 +67,14 @@ class Game {
             alert('Неверный ввод. Следует вводить только "a, b, c, d или exit".');
             this._askQuestion();
             return;
-        } else if (answerLetter === this.rightAnswerLetter) {
-            alert(`Ура!!! Вы угадали!\nЭто действительно: ${this.rightAnswer}.`);
-            this.rightAnswerCount++;
-            this.player.upScore(POINTS_FOR_CORRECT);
+        } else if (answerLetter === this._rightAnswerLetter) {
+            alert(`Ура!!! Вы угадали!\nЭто действительно: ${this._rightAnswer}.`);
+            this._rightAnswerCount++;
+            this._player.upScore(POINTS_FOR_CORRECT);
             this._chooseQuestion();
         } else {
-            alert(`Ответ неверный.\nПравильный ответ: ${this.rightAnswer}.`);
-            this.wrongAnswerCount++;
+            alert(`Ответ неверный.\nПравильный ответ: ${this._rightAnswer}.`);
+            this._wrongAnswerCount++;
             this._chooseQuestion();
         }
     }

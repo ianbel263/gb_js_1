@@ -1,33 +1,33 @@
 class Map {
     constructor(cols, rows) {
-        this.cols = cols;
-        this.rows = rows;
-        this.map = '';
+        this._cols = cols;
+        this._rows = rows;
+        this._map = '';
     }
 
     render() {
-        for (let row = 0; row < this.rows; row++) {
-            for (let col = 0; col < this.cols; col++) {
+        for (let row = 0; row < this._rows; row++) {
+            for (let col = 0; col < this._cols; col++) {
                 if (player.getPlace().col === col && player.getPlace().row === row) {
-                    this.map += 'o '
+                    this._map += 'o '
                 } else {
-                    this.map += 'x ';
+                    this._map += 'x ';
                 }
             }
 
-            this.map += '\n';
+            this._map += '\n';
         }
 
-        console.log(this.map);
+        console.log(this._map);
     }
 
     clear() {
-        this.map = '';
+        this._map = '';
         console.clear();
     }
 
     rerender() {
-        this.map = '';
+        this._map = '';
         console.clear();
         this.render();
     }

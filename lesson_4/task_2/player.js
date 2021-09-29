@@ -1,50 +1,50 @@
 class Player {
     constructor(col, row) {
-        this.col = col;
-        this.row = row;
+        this._col = col;
+        this._row = row;
     }
 
     getPlace() {
         return {
-            col: this.col,
-            row: this.row
+            col: this._col,
+            row: this._row
         }
     }
 
     move(direction) {
         switch(direction) {
             case 'UP':
-                this.row --;
+                this._row --;
                 break;
             case 'DOWN':
-                this.row ++;
+                this._row ++;
                 break;
             case 'LEFT':
-                this.col --;
+                this._col --;
                 break;
             case 'RIGHT':
-                this.col ++;
+                this._col ++;
                 break;
             case 'UP_LEFT':
-                this.col --;
-                this.row --;
+                this._col --;
+                this._row --;
                 break;
             case 'UP_RIGHT':
-                this.col ++;
-                this.row --;
+                this._col ++;
+                this._row --;
                 break;
             case 'DOWN_LEFT':
-                this.col --;
-                this.row ++;
+                this._col --;
+                this._row ++;
                 break;
             case 'DOWN_RIGHT':
-                this.col ++;
-                this.row ++;
+                this._col ++;
+                this._row ++;
                 break;
         }
 
-        this.col = this._checkLimit(this.col, MapSize.COLS);
-        this.row = this._checkLimit(this.row, MapSize.ROWS);
+        this._col = this._checkLimit(this._col, MapSize.COLS);
+        this._row = this._checkLimit(this._row, MapSize.ROWS);
     }
 
     _checkLimit(coord, limit) {

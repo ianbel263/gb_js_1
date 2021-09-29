@@ -1,17 +1,17 @@
 class Player {
     constructor() {
-        this.score = 0;
+        this._score = 0;
     }
 
     upScore(score) {
-        this.score += score;
+        this._score += score;
     }
 
     getScore() {
-        return this.score;
+        return this._score;
     }
 
     resetScore() {
-        this.score = 0;
+        this._score = 0;
     }
 }

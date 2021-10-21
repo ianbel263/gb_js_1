@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        /*
+            Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation),
+            где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от
+            переданного значения операции (использовать switch) выполнить одну из арифметических операций
+            (использовать функции из задания 4) и вернуть полученное значение.
+        */
+
+        const getSumm = function (a, b) {
+            return a + b;
+        };
+
+        const subtractNumbers = function (a, b) {
+            return a - b;
+        };
+
+        const splitNumbers = function (a, b) {
+            if (b === 0) {
+                throw new Error('На ноль делить нельзя');
+            }
+
+            return a / b;
+        };
+        
+        const multiplyNumbers = function (a, b) {
+            return a * b;
+        };
+
+        /**
+         * Функция выполняет арифметические операции над двумя числами
+         * @param {number} arg1 Первое число
+         * @param {number} arg2 Второе число
+         * @param {('sum'|'sub'|'split'|'mul')} operation Наименование математической операции
+         * @throws Выбрасывает ошибку, если указана неверная математическая операция
+         * @returns {number} Возвращает результат математической операции
+         */
+        const mathOperation = function(arg1, arg2, operation) {
+            switch(operation) {
+                case 'sum':
+                    return getSumm(arg1, arg2);
+                case 'sub':
+                    return subtractNumbers(arg1, arg2);
+                case 'split':
+                    return splitNumbers(arg1, arg2);
+                case 'mul':
+                    return multiplyNumbers(arg1, arg2);
+                default:
+                    throw new Error('Неверная операция');
+            }
+        };
+
+        console.log(mathOperation(4, 8, 'sum'));
+        console.log(mathOperation(4, 8, 'split'));
+        console.log(mathOperation(4, 8, 'sub'));
+        console.log(mathOperation(4, 8, 'mul'));
+        console.log(mathOperation(4, 8, 'plus'));
+
+    </script>
+</body>
+</html>

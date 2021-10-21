@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        /*
+            Реализовать основные 4 арифметические операции (+, -, /, *) в виде функций с двумя параметрами. 
+            Т.е. например, функция для сложения должна принимать два числа, складывать их
+            и возвращать результат.
+            Обязательно использовать оператор return.
+        */
+
+        const getSumm = function (a, b) {
+            return a + b;
+        };
+
+        const subtractNumbers = function (a, b) {
+            return a - b;
+        };
+
+        const splitNumbers = function (a, b) {
+            if (b === 0) {
+                throw new Error('На ноль делить нельзя');
+            }
+
+            return a / b;
+        };
+        
+        const multiplyNumbers = function (a, b) {
+            return a * b;
+        };
+
+        console.log(getSumm(4, 8));
+        console.log(subtractNumbers(4, 8));
+        console.log(splitNumbers(4, 8));
+        console.log(multiplyNumbers(4, 8));
+        console.log(splitNumbers(4, 0));
+
+    </script>
+</body>
+</html>
